@@ -63,15 +63,25 @@ public class UserController {
      * @return 修改之后的User对象
      */
     @PutMapping("/users/{name}")
-    User updateUser(@PathVariable String name, @RequestBody User updatedUser) {
-        User user = users.get(name);
-        user.setContent(updatedUser.getContent());
-        return user;
+    ResponseEntity<User> updateUser(@PathVariable String name, @RequestBody User updatedUser) {
+        if(users.containsKey(name)){
+            User user = users.get(name);
+            user.setContent(updatedUser.getContent());
+            return new ResponseEntity<>(user,HttpStatus.OK);
+        }else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
     }
 
     @DeleteMapping("/users/{name}")
-    void deleteUser(@PathVariable String name){
-        users.remove(name);
+    ResponseEntity<Void> deleteUser(@PathVariable String name){
+        if(users.containsKey(name)){
+            users.remove(name);
+            return new ResponseEntity<>(HttpStatus.OK);
+        }else{
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 
 
