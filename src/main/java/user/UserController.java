@@ -47,8 +47,12 @@ public class UserController {
      * @return name确定User对象
      */
     @GetMapping("/users/{name}")
-    User getUser(@PathVariable String name) {
-        return users.get(name);
+    ResponseEntity<User> getUser(@PathVariable String name) {
+        if(users.containsKey(name)){
+            return new ResponseEntity<>(users.get(name),HttpStatus.OK);
+        }else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 
     /**
