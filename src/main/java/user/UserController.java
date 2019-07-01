@@ -1,5 +1,7 @@
 package user;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -32,9 +34,10 @@ public class UserController {
      * @return 返回创建成功的User对象
      */
     @PostMapping("/users")
-    User newUser(@RequestBody User user) {
+    ResponseEntity<User> newUser(@RequestBody User user) {
         users.put(user.getName(), user);
-        return users.get(user.getName());
+        // 创建成功后返回User对象，以及自定义状态码201
+        return new ResponseEntity<>(users.get(user.getName()), HttpStatus.CREATED);
     }
 
     /**
