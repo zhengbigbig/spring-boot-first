@@ -8,6 +8,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+
+// @Component 告诉Spring，这是一个组件，可以用来注入到其他对象里
+// 资源的控制，资源的接口合集
 @RestController
 public class UserController {
     // user - - > User对象
