@@ -1,8 +1,6 @@
 package optional;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 public class Test {
     public static void main(String[] args) {
@@ -29,8 +27,13 @@ public class Test {
             1.返回null - - > 转换成Optional.empty();
             2.返回正常值 - - > 转换成Optional.of(value);
          */
-    }
+        Optional<String> value = Optional.ofNullable(cache.get("test"));
+        String val = value.orElseGet(()->db.get("test"));
+        System.out.println(val);
 
+    }
+    static Map<String,String> db = new HashMap<>();
+    static Map<String,String> cache = new HashMap<>();
     // 查找List里的第一个偶数
     private static Optional<Integer> find(List<Integer> numbers) {
         for(Integer item: numbers){
