@@ -1,7 +1,10 @@
+optional/Test.class
 item/Application.class
 item/ItemController.class
 hello/Greeting.class
 user/UserController.class
+optional/FileReader.class
+user/UserFactory.class
 hello/Application.class
 user/Application.class
 user/User.class
