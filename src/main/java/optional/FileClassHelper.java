@@ -23,8 +23,7 @@ public class FileClassHelper{
         }catch (IOException e) {
             System.out.println("Failed to write in path2.");
         }
-
-
+        
     }
 }
 
